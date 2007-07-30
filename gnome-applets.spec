@@ -6,7 +6,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.18.0
+Version: 2.19.0
 Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/GNOME
@@ -108,9 +108,9 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %setup -q
 %patch0 -p1 -b .fixdir 	 
 #needed by patch0 	 
-aclocal-1.9 -I m4 	 
-automake-1.9 	 
+aclocal -I m4 	 
 autoconf
+automake 	 
 
 %build
 %configure2_5x --disable-scrollkeeper
@@ -129,6 +129,8 @@ desktop-file-install --vendor="" \
 
 
 %{find_lang} %{name}-2.0 --with-gnome --all-name
+#gw bug in find_lang
+perl -pi -e "s^/_^_^" %name-2.0.lang
 for omf in %buildroot%_datadir/omf/*/{*-??.omf,*-??_??.omf} ;do 
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
 done
@@ -137,7 +139,7 @@ rm -rf %buildroot/var
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%define schemas battstat charpick cpufreq-applet drivemount geyes gswitchit gweather mixer multiload stickynotes
+%define schemas battstat charpick cpufreq-applet drivemount geyes gweather mixer multiload stickynotes
 
 %post
 %update_scrollkeeper
@@ -163,7 +165,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/gconf/schemas/drivemount.schemas
 %{_sysconfdir}/gconf/schemas/geyes.schemas
-%{_sysconfdir}/gconf/schemas/gswitchit.schemas
 %{_sysconfdir}/gconf/schemas/gweather.schemas
 %{_sysconfdir}/gconf/schemas/mixer.schemas
 %{_sysconfdir}/gconf/schemas/multiload.schemas
@@ -176,7 +177,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/omf/*
 %{_datadir}/omf/*/*-C.omf
 %py_puresitedir/invest*
-%_datadir/applications/invest-chart.desktop
 %{_datadir}/gnome-applets
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/*
