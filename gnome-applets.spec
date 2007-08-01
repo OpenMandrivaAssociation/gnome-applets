@@ -3,6 +3,7 @@
 
 %define major 0
 %define libname %mklibname %name %major
+%define libnamedev %mklibname -d %name
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
@@ -86,14 +87,15 @@ enhance your GNOME experience.
 You should install the gnome-applets package if you would like to abuse the
 GNOME desktop environment by embedding small utilities in the GNOME panel.
 
-%package -n %libname-devel
+%package -n %libnamedev
 Group: Development/C
 Summary: Devel libraries of Gnome Applets
 Requires: %libname = %version
 Provides: %name-devel = %version-%release
 Provides: lib%name-devel = %version-%release
+Obsoletes: %mklibname -d %name 0
 
-%description -n %libname-devel
+%description -n %libnamedev
 GNOME (GNU Network Object Model Environment) is a user-friendly
 set of applications and desktop tools to be used in conjunction with a
 window manager for the X Window System.  GNOME is similar in purpose and
@@ -186,7 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %_libdir/libgweather.so.%{major}*
 
-%files -n %libname-devel
+%files -n %libnamedev
 %defattr(-, root, root)
 %doc ChangeLog
 %attr(644,root,root) %_libdir/lib*a
