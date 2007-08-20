@@ -8,13 +8,11 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.19.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 
-# (fc) 2.15.1.1-3mdv fix directories for invest applet 	 
-Patch0:         gnome-applets-2.15.90-fixdir.patch
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
@@ -108,11 +106,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fixdir 	 
-#needed by patch0 	 
-aclocal -I m4 	 
-autoconf
-automake 	 
 
 %build
 %configure2_5x --disable-scrollkeeper
@@ -142,6 +135,11 @@ rm -rf %buildroot/var
 rm -rf $RPM_BUILD_ROOT
 
 %define schemas battstat charpick cpufreq-applet drivemount geyes gweather mixer multiload stickynotes
+
+%pre
+if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
+ /bin/rm -rf %{_libdir}/invest-applet 
+fi
 
 %post
 %update_scrollkeeper
