@@ -8,7 +8,7 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.19.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -122,14 +122,15 @@ desktop-file-install --vendor="" \
   --add-category="X-MandrivaLinux-MoreApplications-Finances" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/invest-chart.desktop
 
+# ugly hack until rpm-mandriva-setup is fixed
+/usr/lib/rpm/find-lang.sh $RPM_BUILD_ROOT %{name}-2.0 --with-gnome --all-name
 
-%{find_lang} %{name}-2.0 --with-gnome --all-name
-#gw bug in find_lang
-perl -pi -e "s^/_^_^" %name-2.0.lang
+#find_lang %{name}-2.0 --with-gnome --all-name
+
 for omf in %buildroot%_datadir/omf/*/{*-??.omf,*-??_??.omf} ;do 
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
 done
-rm -rf %buildroot/var
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
