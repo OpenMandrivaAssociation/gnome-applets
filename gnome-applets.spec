@@ -7,8 +7,8 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.19.1
-Release:	%mkrel 4
+Version: 2.19.91
+Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -54,7 +54,6 @@ BuildRequires: perl-XML-Parser
 BuildRequires: libxslt-proc
 BuildRequires: libwnck-devel
 BuildRequires: automake1.9
-BuildRequires: desktop-file-utils
 Conflicts:	gnome-panel < 2.3.0
 Obsoletes:	gnome-cpufreq-applet
 Provides:	gnome-cpufreq-applet
@@ -115,12 +114,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 rm -rf $RPM_BUILD_ROOT %name-2.0.lang
 
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --remove-category="Office" \
-  --add-category="X-MandrivaLinux-MoreApplications-Finances" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/invest-chart.desktop
 
 %find_lang %{name}-2.0 --with-gnome --all-name
 
