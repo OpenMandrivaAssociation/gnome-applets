@@ -8,11 +8,18 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.20.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch: gnome-applets-2.15.90-fixdir.patch
+# (fc) 2.20.0-2mdv fix mixer applet wake-up (GNOME bug #370937)
+Patch0: 	gnome-applets-2.20.0-mixer-wakeups.patch
+# (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
+Patch1:		gnome-applets-2.18.0-fix-find.patch
+# (fc) 2.20.0-2mdv fix null applet (GNOME bug #395035)
+Patch2:		gnome-applets-2.16.0.1-fix-null-applet.patch
+# (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
+Patch3:		gnome-applets-2.18.0-node-leak.patch
 
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -106,11 +113,13 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fixdir	 
-#needed by patch0	 
-aclocal -I m4 	  
-autoconf   
-automake
+%patch0 -p1 -b .mixer-wakeups
+%patch1 -p1 -b .fix-find
+%patch2 -p1 -b .fix-null-applet
+%patch3 -p1 -b .node-leak
+
+#needed by patch0
+autoconf
 
 %build
 %configure2_5x --disable-scrollkeeper
