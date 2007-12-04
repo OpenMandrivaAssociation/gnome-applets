@@ -7,7 +7,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.21.1
+Version: 2.21.2
 Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/GNOME
