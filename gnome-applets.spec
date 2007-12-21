@@ -22,6 +22,7 @@ Patch2:		gnome-applets-2.16.0.1-fix-null-applet.patch
 Patch3:		gnome-applets-2.18.0-node-leak.patch
 
 URL:		http://www.gnome.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
 Requires(postun):		scrollkeeper >= 0.3
 Requires:   gnome-system-monitor
