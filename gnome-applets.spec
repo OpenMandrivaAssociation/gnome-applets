@@ -1,13 +1,9 @@
 # Define arches where APM is supported and available
 %define apm_arches %{ix86} ppc
 
-%define major 0
-%define libname %mklibname %name %major
-%define libnamedev %mklibname -d %name
-
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.21.2
+Version: 2.21.3
 Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/GNOME
@@ -16,8 +12,6 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz
 Patch0: 	gnome-applets-2.20.0-mixer-wakeups.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
-# (fc) 2.20.0-2mdv fix null applet (GNOME bug #395035)
-Patch2:		gnome-applets-2.16.0.1-fix-null-applet.patch
 # (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
 Patch3:		gnome-applets-2.18.0-node-leak.patch
 
@@ -48,7 +42,8 @@ BuildRequires: libgnome-window-settings-devel
 BuildRequires: libgnomekbd-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: gnome-python-applet
-BuildRequires: gnome-python
+BuildRequires: gnome-python-devel
+BuildRequires: libgweather-devel
 %if %mdkversion > 200600
 BuildRequires: libnotify-devel >= 0.3.0
 BuildRequires: hal-devel >= 0.5.3
@@ -77,45 +72,11 @@ enhance your GNOME experience.
 You should install the gnome-applets package if you would like to abuse the
 GNOME desktop environment by embedding small utilities in the GNOME panel.
 
-%package -n %libname
-Group: System/Libraries
-Summary: Shared libraries of Gnome Applets
-
-%description -n %libname
-GNOME (GNU Network Object Model Environment) is a user-friendly
-set of applications and desktop tools to be used in conjunction with a
-window manager for the X Window System.  GNOME is similar in purpose and
-scope to CDE and KDE, but GNOME (like KDE) is based completely on Open Source
-software.  The gnome-applets package provides Panel applets which
-enhance your GNOME experience.
-
-You should install the gnome-applets package if you would like to abuse the
-GNOME desktop environment by embedding small utilities in the GNOME panel.
-
-%package -n %libnamedev
-Group: Development/C
-Summary: Devel libraries of Gnome Applets
-Requires: %libname = %version
-Provides: %name-devel = %version-%release
-Provides: lib%name-devel = %version-%release
-Obsoletes: %mklibname -d %name 0
-
-%description -n %libnamedev
-GNOME (GNU Network Object Model Environment) is a user-friendly
-set of applications and desktop tools to be used in conjunction with a
-window manager for the X Window System.  GNOME is similar in purpose and
-scope to CDE and KDE, but GNOME (like KDE) is based completely on Open Source
-software.  The gnome-applets package provides Panel applets which
-enhance your GNOME experience.
-
-You should install the gnome-applets package if you would like to abuse the
-GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
 %patch0 -p1 -b .mixer-wakeups
 %patch1 -p1 -b .fix-find
-%patch2 -p1 -b .fix-null-applet
 %patch3 -p1 -b .node-leak
 
 #needed by patch0
@@ -142,7 +103,7 @@ done
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%define schemas battstat charpick cpufreq-applet drivemount geyes gweather mixer multiload stickynotes
+%define schemas battstat charpick cpufreq-applet drivemount geyes mixer multiload stickynotes
 
 %pre
 if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
@@ -161,9 +122,6 @@ fi
 %clean_scrollkeeper
 %clean_icon_cache hicolor
 
-%post -n %libname -p /sbin/ldconfig
-%postun -n %libname -p /sbin/ldconfig
-
 %files -f %{name}-2.0.lang
 %defattr(-, root, root)
 
@@ -173,7 +131,6 @@ fi
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/gconf/schemas/drivemount.schemas
 %{_sysconfdir}/gconf/schemas/geyes.schemas
-%{_sysconfdir}/gconf/schemas/gweather.schemas
 %{_sysconfdir}/gconf/schemas/mixer.schemas
 %{_sysconfdir}/gconf/schemas/multiload.schemas
 %{_sysconfdir}/gconf/schemas/stickynotes.schemas
@@ -189,17 +146,5 @@ fi
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/xmodmap
-
-%files -n %libname
-%defattr(-, root, root)
-%_libdir/libgweather.so.%{major}*
-
-%files -n %libnamedev
-%defattr(-, root, root)
-%doc ChangeLog
-%attr(644,root,root) %_libdir/lib*a
-%_libdir/lib*.so
-%_libdir/pkgconfig/*.pc
-%_includedir/*
 
 
