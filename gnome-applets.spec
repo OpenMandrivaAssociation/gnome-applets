@@ -3,7 +3,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.21.3
+Version: 2.21.4
 Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/GNOME
@@ -43,7 +43,7 @@ BuildRequires: libgnomekbd-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: gnome-python-applet
 BuildRequires: gnome-python-devel
-BuildRequires: libgweather-devel
+BuildRequires: libgweather-devel >= 2.21.1
 %if %mdkversion > 200600
 BuildRequires: libnotify-devel >= 0.3.0
 BuildRequires: hal-devel >= 0.5.3
