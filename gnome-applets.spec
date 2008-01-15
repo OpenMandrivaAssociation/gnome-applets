@@ -4,7 +4,7 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.21.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -12,6 +12,8 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz
 Patch0: 	gnome-applets-2.20.0-mixer-wakeups.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
+#gw http://bugzilla.gnome.org/show_bug.cgi?id=509750
+Patch2: gnome-applets-2.21.4-gweather-locations.patch
 # (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
 Patch3:		gnome-applets-2.18.0-node-leak.patch
 
@@ -77,6 +79,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %setup -q
 %patch0 -p1 -b .mixer-wakeups
 %patch1 -p1 -b .fix-find
+%patch2 -p1
 %patch3 -p1 -b .node-leak
 
 #needed by patch0
