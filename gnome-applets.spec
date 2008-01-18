@@ -4,18 +4,22 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.21.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.20.0-2mdv fix mixer applet wake-up (GNOME bug #370937)
-Patch0: 	gnome-applets-2.20.0-mixer-wakeups.patch
+Source1:	cpufreq-selector.pam
+Source2:	cpufreq-selector.app
+# (fc) 2.20.0-2mdv fix mixer applet wake-up (GNOME bug #370937, #478485) (Fedora)
+Patch0: 	gnome-applets-2.21.1-mixer-sync.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
 #gw http://bugzilla.gnome.org/show_bug.cgi?id=509750
 Patch2: gnome-applets-2.21.4-gweather-locations.patch
 # (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
 Patch3:		gnome-applets-2.18.0-node-leak.patch
+# (fc) 2.21.4-3mdv doesn't setuid cpufreq-selector, usermod-ify it (Fedora)
+Patch4:		gnome-applets-2.21.4-cpufreq.patch
 
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -28,6 +32,7 @@ Requires: pygtk2.0-libglade
 Requires: gnome-python-applet
 Requires: gnome-python-extras
 Requires: gnome-python-gconf
+Requires: usermode-consoleonly
 BuildRequires: gnome-desktop-devel >= 2.11.1
 BuildRequires: libpanel-applet-2-devel >= 2.13.4
 BuildRequires: libgtop2.0-devel >= 2.0.0
@@ -77,9 +82,9 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch0 -p1 -b .mixer-wakeups
+%patch0 -p1 -b .mixer-sync
 %patch1 -p1 -b .fix-find
-%patch2 -p1
+%patch2 -p1 -b .gweather-locations
 %patch3 -p1 -b .node-leak
 
 #needed by patch0
@@ -88,13 +93,21 @@ autoconf
 automake
 
 %build
-%configure2_5x --disable-scrollkeeper
+%configure2_5x --enable-suid=no --disable-scrollkeeper
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT %name-2.0.lang
 
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
+
+# usermode-ify cpufreq-selector
+mkdir -p $RPM_BUILD_ROOT%{_sbindir}
+mv $RPM_BUILD_ROOT%{_bindir}/cpufreq-selector $RPM_BUILD_ROOT%{_sbindir}
+ln -s consolehelper $RPM_BUILD_ROOT%{_bindir}/cpufreq-selector
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/{pam.d,security/console.apps}
+install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cpufreq-selector
+install -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/security/console.apps/cpufreq-selector
 
 %find_lang %{name}-2.0 --with-gnome --all-name
 
@@ -129,6 +142,8 @@ fi
 %defattr(-, root, root)
 
 %doc AUTHORS COPYING NEWS README
+%config(noreplace) %{_sysconfdir}/pam.d/*
+%config(noreplace) %{_sysconfdir}/security/console.apps/*
 %{_sysconfdir}/gconf/schemas/battstat.schemas
 %{_sysconfdir}/gconf/schemas/charpick.schemas
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
@@ -138,6 +153,7 @@ fi
 %{_sysconfdir}/gconf/schemas/multiload.schemas
 %{_sysconfdir}/gconf/schemas/stickynotes.schemas
 %config(noreplace) %{_sysconfdir}/sound/events/*
+%{_sbindir}/*
 %{_bindir}/*
 %{_libexecdir}/*applet*
 %{_libdir}/bonobo/servers/*
