@@ -4,7 +4,7 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.21.4
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -86,6 +86,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %patch1 -p1 -b .fix-find
 %patch2 -p1 -b .gweather-locations
 %patch3 -p1 -b .node-leak
+%patch4 -p1 -b .cpufreq
 
 #needed by patch0
 aclocal -I m4
