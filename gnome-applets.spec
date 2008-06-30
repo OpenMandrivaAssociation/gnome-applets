@@ -3,9 +3,9 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.22.2
+Version: 2.22.3
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Source1:	cpufreq-selector.pam
