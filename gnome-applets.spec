@@ -3,13 +3,11 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.23.3
-Release:	%mkrel 2
+Version: 2.23.4
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.20.0-2mdv fix mixer applet wake-up (GNOME bug #370937, #478485) (Fedora)
-Patch0: 	gnome-applets-2.21.1-mixer-sync.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
 # (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
@@ -74,14 +72,8 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch0 -p1 -b .mixer-sync
 %patch1 -p1 -b .fix-find
 %patch3 -p1 -b .node-leak
-
-#needed by patch0
-aclocal -I m4
-autoconf
-automake
 
 %build
 %configure2_5x --enable-suid=no --disable-scrollkeeper
