@@ -3,15 +3,14 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.25.1
-Release:	%mkrel 2
+Version: 2.25.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch: gnome-applets-2.25.2-format-strings.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
-# (fc) 2.20.0-2mdv fix bonoboui leak (GNOME bug #428072)
-Patch3:		gnome-applets-2.18.0-node-leak.patch
 
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -72,8 +71,8 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
+%patch -p1
 %patch1 -p1 -b .fix-find
-%patch3 -p1 -b .node-leak
 
 %build
 %configure2_5x --enable-suid=no --disable-scrollkeeper
