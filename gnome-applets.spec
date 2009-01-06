@@ -3,8 +3,8 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.25.2
-Release:	%mkrel 2
+Version: 2.25.3
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -17,7 +17,6 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
 Requires(postun):		scrollkeeper >= 0.3
 Requires:   gnome-system-monitor
-Requires:   gstreamer0.10-plugins-base
 Requires: pygtk2.0-libglade
 Requires: gnome-python-applet
 Requires: gnome-python-extras
@@ -39,7 +38,7 @@ BuildRequires: libgnomekbd-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: gnome-python-applet
 BuildRequires: gnome-python-devel
-BuildRequires: libgweather-devel >= 2.22.1
+BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: policykit-gnome-devel
 %if %mdkversion > 200600
 BuildRequires: libnotify-devel >= 0.3.0
@@ -48,7 +47,6 @@ BuildRequires: hal-devel >= 0.5.3
 %ifarch %{apm_arches}
 BuildRequires: libapm-devel
 %endif
-BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: intltool
 BuildRequires: libxslt-proc
 BuildRequires: libwnck-devel
@@ -94,7 +92,7 @@ done
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%define schemas battstat charpick cpufreq-applet drivemount geyes mixer multiload stickynotes
+%define schemas battstat charpick cpufreq-applet drivemount geyes multiload stickynotes
 
 %pre
 if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
@@ -123,7 +121,6 @@ fi
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/gconf/schemas/drivemount.schemas
 %{_sysconfdir}/gconf/schemas/geyes.schemas
-%{_sysconfdir}/gconf/schemas/mixer.schemas
 %{_sysconfdir}/gconf/schemas/multiload.schemas
 %{_sysconfdir}/gconf/schemas/stickynotes.schemas
 %config(noreplace) %{_sysconfdir}/sound/events/*
