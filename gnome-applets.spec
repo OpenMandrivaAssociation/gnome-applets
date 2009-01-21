@@ -72,7 +72,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %setup -q
 %patch -p1
 %patch1 -p1 -b .fix-find
-%patch2 -p0
+%patch2 -p1 -b .fixtrash
 
 %build
 %configure2_5x --enable-suid=no --disable-scrollkeeper
