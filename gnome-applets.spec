@@ -3,16 +3,14 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.25.4
-Release:	%mkrel 2
+Version: 2.25.90
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch: gnome-applets-2.25.2-format-strings.patch
 # (fc) 2.20.0-2mdv fix find in weather preferences (GNOME bug #424639)
 Patch1:		gnome-applets-2.18.0-fix-find.patch
-# gw fix hanging trash applet (GNOME bug #567971)
-Patch2:		gnome-applets-r11211-fix-trash-applet.patch
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
@@ -72,7 +70,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %setup -q
 %patch -p1
 %patch1 -p1 -b .fix-find
-%patch2 -p1 -b .fixtrash
 
 %build
 %configure2_5x --enable-suid=no --disable-scrollkeeper
