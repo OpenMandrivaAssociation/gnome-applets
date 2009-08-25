@@ -15,6 +15,7 @@ URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
 Requires(postun):		scrollkeeper >= 0.3
+Requires:	polkit-agent
 Requires:   gnome-system-monitor
 Requires: pygtk2.0-libglade
 Requires: gnome-python-applet
