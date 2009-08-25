@@ -3,7 +3,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.27.4
+Version: 2.27.91
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -38,7 +38,7 @@ BuildRequires: pygtk2.0-devel
 BuildRequires: gnome-python-applet
 BuildRequires: gnome-python-devel
 BuildRequires: libgweather-devel >= 2.25.4
-BuildRequires: policykit-gnome-devel
+BuildRequires: polkit-1-devel
 %if %mdkversion > 200600
 BuildRequires: libnotify-devel >= 0.3.0
 BuildRequires: hal-devel >= 0.5.3
@@ -134,6 +134,6 @@ fi
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/xmodmap
-%_datadir/PolicyKit/policy/org.gnome.cpufreqselector.policy
+%_datadir/polkit-1/actions/org.gnome.cpufreqselector.policy
 %_datadir/dbus-1/system-services/org.gnome.CPUFreqSelector.service
 
