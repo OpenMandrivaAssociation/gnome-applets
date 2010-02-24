@@ -1,14 +1,20 @@
-# Define arches where APM is supported and available
-%define apm_arches %{ix86} ppc
-
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.29.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch: gnome-applets-2.25.2-format-strings.patch
+# fix format security warnings
+Patch0: gnome-applets-2.25.2-format-strings.patch
+# (fc) 2.29.5-2mdv fix omf uuid (Fedora) (GNOME bug #59972)
+Patch1: gnome-applets-2.29.5-seriesid.patch
+# (fc) 2.29.5-2mdv fix linking (Fedora) (GNOME bug #609945)
+Patch2: gnome-applets-2.29.5-fixlinking.patch
+# (fc) 2.29.5-2mdv hide old battery status applet (Fedora)
+Patch3: gnome-applets-null-battstat.patch
+# (fc) 2.29.5-2mdv ensure old mixer applet isn't visible anywhere (Fedora)
+Patch4: gnome-applets-no-mixer-icon.patch
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Requires(post):		scrollkeeper >= 0.3
@@ -42,9 +48,6 @@ BuildRequires: polkit-1-devel
 BuildRequires: libnotify-devel >= 0.3.0
 BuildRequires: hal-devel >= 0.5.3
 %endif
-%ifarch %{apm_arches}
-BuildRequires: libapm-devel
-%endif
 BuildRequires: intltool
 BuildRequires: libxslt-proc
 BuildRequires: libwnck-devel
@@ -67,10 +70,17 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1 -b .string_format
+%patch1 -p1 -b .seriesid
+%patch2 -p1 -b .fixlinking
+%patch3 -p1 -b .null-battstat
+%patch4 -p1 -b .no-mixer-icon
+
+#needed by patches 2, 3
+autoreconf
 
 %build
-%configure2_5x --enable-suid=no --disable-scrollkeeper
+%configure2_5x --enable-suid=no --disable-scrollkeeper -disable-battstat
 %make
 
 %install
@@ -89,38 +99,40 @@ done
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%define schemas battstat charpick cpufreq-applet drivemount geyes multiload stickynotes
+%define schemas charpick cpufreq-applet drivemount geyes multiload stickynotes
 
 %pre
 if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
  /bin/rm -rf %{_libdir}/invest-applet 
 fi
 
+%if %mdkversion < 200900
 %post
 %update_scrollkeeper
 %post_install_gconf_schemas %schemas
 %update_icon_cache hicolor
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
 
+%if %mdkversion < 200900
 %postun
 %clean_scrollkeeper
 %clean_icon_cache hicolor
+%endif
 
 %files -f %{name}-2.0.lang
 %defattr(-, root, root)
 
 %doc AUTHORS COPYING NEWS README
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.gnome.CPUFreqSelector.conf
-%{_sysconfdir}/gconf/schemas/battstat.schemas
 %{_sysconfdir}/gconf/schemas/charpick.schemas
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/gconf/schemas/drivemount.schemas
 %{_sysconfdir}/gconf/schemas/geyes.schemas
 %{_sysconfdir}/gconf/schemas/multiload.schemas
 %{_sysconfdir}/gconf/schemas/stickynotes.schemas
-%config(noreplace) %{_sysconfdir}/sound/events/*
 %{_bindir}/*
 %{_libexecdir}/*applet*
 %{_libdir}/bonobo/servers/*
