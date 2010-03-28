@@ -1,12 +1,10 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.29.5
-Release:	%mkrel 2
+Version: 2.30.0
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# fix format security warnings
-Patch0: gnome-applets-2.25.2-format-strings.patch
 # (fc) 2.29.5-2mdv fix omf uuid (Fedora) (GNOME bug #59972)
 Patch1: gnome-applets-2.29.5-seriesid.patch
 # (fc) 2.29.5-2mdv fix linking (Fedora) (GNOME bug #609945)
@@ -70,7 +68,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch0 -p1 -b .string_format
 %patch1 -p1 -b .seriesid
 %patch2 -p1 -b .fixlinking
 %patch3 -p1 -b .null-battstat
@@ -91,7 +88,7 @@ GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
 
 %find_lang %{name}-2.0 --with-gnome --all-name
 
-for omf in %buildroot%_datadir/omf/*/{*-??.omf,*-??_??.omf} ;do 
+for omf in %buildroot%_datadir/omf/*/{*-??.omf,*-??_??.omf,*-???.omf} ;do 
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
 done
 
