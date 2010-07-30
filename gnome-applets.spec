@@ -1,12 +1,10 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.30.0
+Version: 2.31.5
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.29.5-2mdv fix omf uuid (Fedora) (GNOME bug #59972)
-Patch1: gnome-applets-2.29.5-seriesid.patch
 # (fc) 2.29.5-2mdv fix linking (Fedora) (GNOME bug #609945)
 Patch2: gnome-applets-2.29.5-fixlinking.patch
 # (fc) 2.29.5-2mdv hide old battery status applet (Fedora)
@@ -29,7 +27,7 @@ BuildRequires: libpanel-applet-2-devel >= 2.13.4
 BuildRequires: libgtop2.0-devel >= 2.0.0
 BuildRequires: libgail-devel >= 0.13
 BuildRequires: libglade2.0-devel
-BuildRequires: gtk2-devel >= 2.5.0
+BuildRequires: gtk2-devel >= 2.20
 BuildRequires: scrollkeeper
 BuildRequires: gnome-doc-utils
 BuildRequires: libxklavier-devel >= 1.13
@@ -68,7 +66,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch1 -p1 -b .seriesid
 %patch2 -p1 -b .fixlinking
 %patch3 -p1 -b .null-battstat
 %patch4 -p1 -b .no-mixer-icon
