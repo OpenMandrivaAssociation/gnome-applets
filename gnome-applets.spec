@@ -1,12 +1,12 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.31.90
+Version: 2.31.90.1
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (fc) 2.29.5-2mdv fix linking (Fedora) (GNOME bug #609945)
-Patch2: gnome-applets-2.29.5-fixlinking.patch
+Patch2: gnome-applets-2.31.90.1-fixlinking.patch
 # (fc) 2.29.5-2mdv hide old battery status applet (Fedora)
 Patch3: gnome-applets-null-battstat.patch
 # (fc) 2.29.5-2mdv ensure old mixer applet isn't visible anywhere (Fedora)
@@ -139,5 +139,23 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/xmodmap
 %_datadir/polkit-1/actions/org.gnome.cpufreqselector.policy
+%_datadir/dbus-1/services/org.gnome.panel.applet.AccessxStatusAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.CPUFreqAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.CharpickerAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.DriveMountAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.GeyesAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.MultiLoadAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
+%_datadir/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %_datadir/dbus-1/system-services/org.gnome.CPUFreqSelector.service
+%_datadir/gnome-panel/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.CPUFreqApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.CharpickerApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.DriveMountApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.GWeatherApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.GeyesApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.MultiLoadApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.StickyNotesApplet.panel-applet
+%_datadir/gnome-panel/applets/org.gnome.applets.TrashApplet.panel-applet
 
