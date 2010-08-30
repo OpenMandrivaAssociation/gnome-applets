@@ -1,12 +1,10 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version: 2.31.90.1
+Version: 2.31.91
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.29.5-2mdv fix linking (Fedora) (GNOME bug #609945)
-Patch2: gnome-applets-2.31.90.1-fixlinking.patch
 # (fc) 2.29.5-2mdv hide old battery status applet (Fedora)
 Patch3: gnome-applets-null-battstat.patch
 # (fc) 2.29.5-2mdv ensure old mixer applet isn't visible anywhere (Fedora)
@@ -66,11 +64,10 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
-%patch2 -p1 -b .fixlinking
 %patch3 -p1 -b .null-battstat
 %patch4 -p1 -b .no-mixer-icon
 
-#needed by patches 2, 3
+#needed by patch 3
 autoreconf
 
 %build
