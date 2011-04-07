@@ -1,7 +1,7 @@
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
 Version: 2.32.1.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -9,10 +9,10 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz
 Patch3: gnome-applets-null-battstat.patch
 # (fc) 2.29.5-2mdv ensure old mixer applet isn't visible anywhere (Fedora)
 Patch4: gnome-applets-no-mixer-icon.patch
+Patch5: gnome-applets-2.32.1.1-libnotify-0.7.patch
+Patch6: gnome-applets-2.32.1.1-link.patch
 URL:		http://www.gnome.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
-Requires(post):		scrollkeeper >= 0.3
-Requires(postun):		scrollkeeper >= 0.3
 Requires:	polkit-agent
 Requires:   gnome-system-monitor
 Requires: pygtk2.0-libglade
@@ -23,29 +23,25 @@ Requires: usermode-consoleonly
 BuildRequires: gnome-desktop-devel >= 2.11.1
 BuildRequires: libpanel-applet-2-devel >= 2.13.4
 BuildRequires: libgtop2.0-devel >= 2.0.0
-BuildRequires: libgail-devel >= 0.13
-BuildRequires: libglade2.0-devel
 BuildRequires: gtk2-devel >= 2.20
 BuildRequires: scrollkeeper
+BuildRequires: libGConf2-devel GConf2
+BuildRequires: libbonobo-activation-devel
 BuildRequires: gnome-doc-utils
-BuildRequires: libxklavier-devel >= 1.13
 BuildRequires: libcpufreq-devel
 BuildRequires: libgucharmap-devel
-BuildRequires: libgnome-window-settings-devel
-BuildRequires: libgnomekbd-devel
+BuildRequires: gnome-settings-daemon-devel
+BuildRequires: dbus-glib-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: gnome-python-applet
 BuildRequires: gnome-python-devel
 BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: polkit-1-devel
-%if %mdkversion > 200600
 BuildRequires: libnotify-devel >= 0.3.0
-BuildRequires: hal-devel >= 0.5.3
-%endif
 BuildRequires: intltool
 BuildRequires: libxslt-proc
 BuildRequires: libwnck-devel
-BuildRequires: automake1.9
+BuildRequires: automake
 Conflicts:	gnome-panel < 2.3.0
 Obsoletes:	gnome-cpufreq-applet
 Provides:	gnome-cpufreq-applet
@@ -66,18 +62,20 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %setup -q
 %patch3 -p1 -b .null-battstat
 %patch4 -p1 -b .no-mixer-icon
+%patch5 -p1 -b .libnotify
+%patch6 -p0 -b .link
 
 #needed by patch 3
 autoreconf
 
 %build
-%configure2_5x --enable-suid=no --disable-scrollkeeper -disable-battstat
+%configure2_5x --enable-suid=no --disable-scrollkeeper -disable-battstat --disable-schemas-install
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT %name-2.0.lang
 
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
+%makeinstall_std
 
 
 %find_lang %{name}-2.0 --with-gnome --all-name
@@ -155,4 +153,3 @@ fi
 %_datadir/gnome-panel/applets/org.gnome.applets.MultiLoadApplet.panel-applet
 %_datadir/gnome-panel/applets/org.gnome.applets.StickyNotesApplet.panel-applet
 %_datadir/gnome-panel/applets/org.gnome.applets.TrashApplet.panel-applet
-
