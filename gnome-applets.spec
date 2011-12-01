@@ -73,7 +73,7 @@ autoreconf
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT %name-2.0.lang
+rm -rf %{buildroot} %name-2.0.lang
 
 %makeinstall_std
 
@@ -86,7 +86,7 @@ done
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %define schemas charpick cpufreq-applet drivemount geyes multiload stickynotes
 
