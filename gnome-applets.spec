@@ -59,6 +59,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 	--disable-scrollkeeper \
 	--disable-battstat \
 	--disable-schemas-install
+
 %make
 
 %install
@@ -85,11 +86,10 @@ fi
 %{_bindir}/*
 %{_libexecdir}/*applet*
 %{_libdir}/bonobo/servers/*
-%{_datadir}/gnome-2.0/ui/*
 %{py_puresitedir}/invest*
-%{_datadir}/gnome-applets
-%{_datadir}/pixmaps/*
+%{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/pixmaps/*
 %{_datadir}/xmodmap
 %{_datadir}/polkit-1/actions/org.gnome.cpufreqselector.policy
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.AccessxStatusAppletFactory.service
@@ -98,16 +98,21 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.DriveMountAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GeyesAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.InvestAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.MultiLoadAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.NullAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
-%{_datadir}/gnome-panel/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.CPUFreqApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.CharpickerApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.DriveMountApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.GWeatherApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.GeyesApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.MultiLoadApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.StickyNotesApplet.panel-applet
-%{_datadir}/gnome-panel/applets/org.gnome.applets.TrashApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.DriveMountApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GeyesApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.InvestApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.NullApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.TrashApplet.panel-applet
+
