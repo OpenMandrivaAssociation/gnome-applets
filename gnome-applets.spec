@@ -34,7 +34,9 @@ BuildRequires:	pkgconfig(NetworkManager) >= 0.7
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-2.0) >= 2.26
 
-Requires: gnome-python-gconf
+Requires: dbus
+Requires(pre,preun,post): GConf2
+Requires: gnome-panel
 Requires: gnome-system-monitor
 Requires: polkit-agent
 Requires: usermode-consoleonly
@@ -63,7 +65,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %find_lang %{name}-3.0 --with-gnome --all-name
 
