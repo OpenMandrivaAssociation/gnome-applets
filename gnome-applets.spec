@@ -10,6 +10,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:	intltool
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
+BuildRequires:	rarian
 BuildRequires:	cpufrequtils-devel
 BuildRequires:	pkgconfig(dbus-1) >= 1.1.2
 BuildRequires:	pkgconfig(dbus-glib-1) >= 0.74
@@ -91,7 +92,7 @@ fi
 %{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/pixmaps/*
-%{_datadir}/xmodmap
+#{_datadir}/xmodmap
 %{_datadir}/polkit-1/actions/org.gnome.cpufreqselector.policy
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.AccessxStatusAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.CPUFreqAppletFactory.service
