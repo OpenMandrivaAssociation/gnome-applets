@@ -9,7 +9,7 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		gnome-applets.remove-unprovided-gweatherxml-include.patch
+
 
 BuildRequires:	intltool
 BuildRequires:	gnome-common
@@ -28,7 +28,6 @@ BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gstreamer-interfaces-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:	pkgconfig(gucharmap-2.90) >= 2.33.0
-BuildRequires:	pkgconfig(gweather-3.0) >= 2.91.0
 BuildRequires:	pkgconfig(libgtop-2.0) >= 2.11.92
 BuildRequires:	pkgconfig(libnotify) >= 0.7
 BuildRequires:	pkgconfig(libpanelapplet-4.0) >= 2.91.90
