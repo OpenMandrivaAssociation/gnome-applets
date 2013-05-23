@@ -100,7 +100,6 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.CPUFreqAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.CharpickerAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.DriveMountAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GeyesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.InvestAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.MultiLoadAppletFactory.service
@@ -108,12 +107,10 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
-%{_datadir}/glib-2.0/schemas/org.gnome.applets.GWeatherApplet.gschema.xml
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.DriveMountApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GeyesApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.InvestApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
