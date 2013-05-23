@@ -51,7 +51,6 @@ window manager for the X Window System.  GNOME is similar in purpose and
 scope to CDE and KDE, but GNOME (like KDE) is based completely on Open Source
 software.  The gnome-applets package provides Panel applets which
 enhance your GNOME experience.
-
 You should install the gnome-applets package if you would like to abuse the
 GNOME desktop environment by embedding small utilities in the GNOME panel.
 
