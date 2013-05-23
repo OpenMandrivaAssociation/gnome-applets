@@ -22,9 +22,9 @@ BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-icon-theme) >= 2.15.91
 BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
-BuildRequires:	pkgconfig(gstreamer-%{gstapi) >= 0.10.2
-BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi) >= 0.10.2
-BuildRequires:	pkgconfig(gstreamer-interfaces-%{gstapi) >= 0.10.2
+BuildRequires:	pkgconfig(gstreamer-%{gstapi}) >= 0.10.2
+BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi}) >= 0.10.2
+BuildRequires:	pkgconfig(gstreamer-interfaces-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:	pkgconfig(gucharmap-2.90) >= 2.33.0
 BuildRequires:	pkgconfig(gweather-3.0) >= 2.91.0
