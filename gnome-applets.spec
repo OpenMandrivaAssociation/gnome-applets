@@ -9,6 +9,7 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		gnome-applets.remove-unprovided-gweatherxml-include.patch
 
 BuildRequires:	intltool
 BuildRequires:	gnome-common
@@ -56,6 +57,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %configure2_5x \
