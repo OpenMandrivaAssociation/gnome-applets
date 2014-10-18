@@ -1,16 +1,17 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define	gstapi	0.10
+%define	gstapi	1.0
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.5.92
-Release:	9
+Version:	3.8.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
+Patch1:		gnome-applets-3.8.1-adwaita.patch
 
-
+BuildRequires:	autoconf
 BuildRequires:	intltool
 BuildRequires:	gnome-common
 BuildRequires:	rarian
@@ -20,22 +21,21 @@ BuildRequires:	pkgconfig(gio-2.0) >= 2.15.3
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.15.3
 BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gnome-icon-theme) >= 2.15.91
+BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.15.91
 BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gobject-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gstreamer-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi}) >= 0.10.2
-BuildRequires:	pkgconfig(gstreamer-interfaces-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:	pkgconfig(gucharmap-2.90) >= 2.33.0
+BuildRequires:	pkgconfig(gweather-3.0)
 BuildRequires:	pkgconfig(libgtop-2.0) >= 2.11.92
 BuildRequires:	pkgconfig(libnotify) >= 0.7
-BuildRequires:	pkgconfig(libpanelapplet-4.0) >= 2.91.90
 BuildRequires:	pkgconfig(libwnck-3.0) >= 2.91.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(NetworkManager) >= 0.7
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-2.0) >= 2.26
+BuildRequires:	pkgconfig(libpanelapplet-4.0)
 
 Requires:	dbus
 Requires(pre,preun,post): GConf2
@@ -57,11 +57,12 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %prep
 %setup -q
 %apply_patches
+autoreconf -fiv
 
 %build
-%configure2_5x \
+%configure \
 	--enable-suid=no \
-	--disable-scrollkeeper \
+	--enable-compile-warnings=no \
 	--disable-battstat \
 	--disable-schemas-install
 
@@ -84,12 +85,10 @@ fi
 %{_sysconfdir}/gconf/schemas/charpick.schemas
 %{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
 %{_sysconfdir}/gconf/schemas/drivemount.schemas
-%{_sysconfdir}/gconf/schemas/geyes.schemas
 %{_sysconfdir}/gconf/schemas/multiload.schemas
 %{_sysconfdir}/gconf/schemas/stickynotes.schemas
 %{_bindir}/*
 %{_libexecdir}/*applet*
-%{_libdir}/bonobo/servers/*
 %{py_puresitedir}/invest*
 %{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
@@ -107,6 +106,7 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
@@ -117,3 +117,7 @@ fi
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.NullApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
 %{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.TrashApplet.panel-applet
+%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.geyes.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.gweather.gschema.xml
+
