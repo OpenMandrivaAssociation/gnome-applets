@@ -24,7 +24,7 @@ BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.15.91
 BuildRequires:	pkgconfig(gnome-settings-daemon)
-BuildRequires:	pkgconfig(gobject-3.0)
+BuildRequires:	pkgconfig(gobject-2.0)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig(libwnck-3.0) >= 2.91.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(NetworkManager) >= 0.7
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
-BuildRequires:	pkgconfig(pygobject-2.0) >= 2.26
+BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(libpanelapplet-4.0)
 
 Requires:	dbus
