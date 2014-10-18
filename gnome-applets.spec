@@ -15,6 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	intltool
 BuildRequires:	gnome-common
 BuildRequires:	rarian
+BuildRequires:	yelp yelp-tools
 BuildRequires:	pkgconfig(dbus-1) >= 1.1.2
 BuildRequires:	pkgconfig(dbus-glib-1) >= 0.74
 BuildRequires:	pkgconfig(gio-2.0) >= 2.15.3
