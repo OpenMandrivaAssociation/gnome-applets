@@ -80,16 +80,13 @@ fi
 %files -f %{name}-3.0.lang
 %doc AUTHORS COPYING NEWS README
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.gnome.CPUFreqSelector.conf
-%{_sysconfdir}/gconf/schemas/charpick.schemas
-%{_sysconfdir}/gconf/schemas/cpufreq-applet.schemas
-%{_sysconfdir}/gconf/schemas/drivemount.schemas
-%{_sysconfdir}/gconf/schemas/multiload.schemas
-%{_sysconfdir}/gconf/schemas/stickynotes.schemas
 %{_bindir}/*
 %{_libexecdir}/*applet*
 %{py_puresitedir}/invest*
 %{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/icons/hicolor/*/devices/*
+%{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/pixmaps/*
 #{_datadir}/xmodmap
 %{_datadir}/polkit-1/actions/org.gnome.cpufreqselector.policy
@@ -100,9 +97,11 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GeyesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.InvestAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.MultiLoadAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.NullAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.ModemAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.NetspeedAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.WindowPickerFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
@@ -112,10 +111,18 @@ fi
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GeyesApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.InvestApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.NullApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.TrashApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.ModemApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.WindowPicker.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.panel.Netspeed.panel-applet
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.geyes.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.gweather.gschema.xml
-
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.charpick.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.cpufreq.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.cpufreq.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.multiload.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.netspeed.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.window-picker-applet.gschema.xml
