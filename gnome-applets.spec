@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(NetworkManager) >= 0.7
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-3.0)
-BuildRequires:	pkgconfig(libpanelapplet-5.0)
+BuildRequires:	pkgconfig(libpanel-applet)
 
 Requires:	dbus
 Requires:	gnome-panel
