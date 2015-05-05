@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   gnome-applets-3.8.1.tar.xz: fef9be230270d8022b7dca03f4bbb77941d65040
+sources:
+  gnome-applets-3.16.1.tar.xz: 9aae57f35e548def5bcea77b25966fbd5fc0b04e

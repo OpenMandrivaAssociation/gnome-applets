@@ -3,13 +3,12 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.8.1
-Release:	2
+Version:	3.16.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
-Patch1:		gnome-applets-3.8.1-adwaita.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf
 BuildRequires:	intltool
@@ -36,10 +35,9 @@ BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(NetworkManager) >= 0.7
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-3.0)
-BuildRequires:	pkgconfig(libpanelapplet-4.0)
+BuildRequires:	pkgconfig(libpanelapplet-5.0)
 
 Requires:	dbus
-Requires(pre,preun,post): GConf2
 Requires:	gnome-panel
 Requires:	gnome-system-monitor
 Requires:	polkit-agent
@@ -58,7 +56,6 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 %prep
 %setup -q
 %apply_patches
-autoreconf -fiv
 
 %build
 %configure \
@@ -108,17 +105,17 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.DriveMountApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GeyesApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.InvestApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.NullApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.TrashApplet.panel-applet
-%{_datadir}/gnome-panel/4.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.DriveMountApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GeyesApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.InvestApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.NullApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.TrashApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.geyes.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.gweather.gschema.xml
 
