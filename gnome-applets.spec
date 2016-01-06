@@ -3,7 +3,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.16.1
+Version:	3.18.1
 Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -74,7 +74,7 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 
 %pre
 if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
- /bin/rm -rf %{_libdir}/invest-applet 
+ /bin/rm -rf %{_libdir}/invest-applet
 fi
 
 %files -f %{name}-3.0.lang
