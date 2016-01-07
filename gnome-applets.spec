@@ -83,11 +83,11 @@ fi
 %{_bindir}/*
 %{_libexecdir}/*applet*
 %{py_puresitedir}/invest*
+%{_libdir}/gnome-applets/5.0/libwindow-picker-applet.so
 %{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/devices/*
 %{_datadir}/icons/hicolor/*/status/*
-%{_datadir}/pixmaps/*
 #{_datadir}/xmodmap
 %{_datadir}/polkit-1/actions/org.gnome.cpufreqselector.policy
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.AccessxStatusAppletFactory.service
@@ -101,9 +101,12 @@ fi
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.ModemAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.NetspeedAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.WindowPickerFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.BrightnessAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.InhibitAppletFactory.service
 %{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.BrightnessApplet.panel-applet
+%{_datadir}/gnome-panel/5.0/applets/org.gnome.InhibitApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
 %{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
