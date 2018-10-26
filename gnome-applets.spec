@@ -3,8 +3,8 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.18.1
-Release:	3
+Version:	3.30.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
@@ -79,53 +79,16 @@ fi
 
 %files -f %{name}-3.0.lang
 %doc AUTHORS COPYING NEWS README
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.gnome.CPUFreqSelector.conf
-%{_bindir}/*
-%{_libexecdir}/*applet*
-%{py_puresitedir}/invest*
-%{_libdir}/gnome-applets/5.0/libwindow-picker-applet.so
+#config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.gnome.CPUFreqSelector.conf
+#{_bindir}/*
+#{_libexecdir}/*applet*
+#{py_puresitedir}/invest*
+#{_libdir}/gnome-applets/5.0/libwindow-picker-applet.so
 %{_datadir}/gnome-applets/*
+%{_libdir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/devices/*
 %{_datadir}/icons/hicolor/*/status/*
-#{_datadir}/xmodmap
-%{_datadir}/polkit-1/actions/org.gnome.cpufreqselector.policy
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.AccessxStatusAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.CPUFreqAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.CharpickerAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.DriveMountAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.GeyesAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.InvestAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.MultiLoadAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.StickyNotesAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.TrashAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.ModemAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.NetspeedAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.BrightnessAppletFactory.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.InhibitAppletFactory.service
-%{_datadir}/dbus-1/system-services/org.gnome.CPUFreqSelector.service
-%{_datadir}/dbus-1/services/org.gnome.panel.applet.GWeatherAppletFactory.service
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.BrightnessApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.InhibitApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.AccessxStatusApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CPUFreqApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.CharpickerApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.DriveMountApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GeyesApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.InvestApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.MultiLoadApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.StickyNotesApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.TrashApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.GWeatherApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.ModemApplet.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.applets.WindowPicker.panel-applet
-%{_datadir}/gnome-panel/5.0/applets/org.gnome.panel.Netspeed.panel-applet
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.geyes.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.gweather.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.charpick.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.cpufreq.enums.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.cpufreq.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.multiload.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.netspeed.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets.window-picker-applet.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets*
+%{_datadir}/gnome-panel/applets/org.gnome*
+%{_datadir}/pixmaps/window*
