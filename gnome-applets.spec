@@ -3,8 +3,8 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.30.0
-Release:	2
+Version:	3.32.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
@@ -64,10 +64,10 @@ GNOME desktop environment by embedding small utilities in the GNOME panel.
 	--disable-battstat \
 	--disable-schemas-install
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 %find_lang %{name}-3.0 --with-gnome --all-name
 
 %define schemas charpick cpufreq-applet drivemount geyes multiload stickynotes
