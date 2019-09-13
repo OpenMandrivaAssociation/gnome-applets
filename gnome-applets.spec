@@ -3,7 +3,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.32.0
+Version:	3.34.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
