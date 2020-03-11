@@ -32,7 +32,7 @@ BuildRequires:	pkgconfig(libgtop-2.0) >= 2.11.92
 BuildRequires:	pkgconfig(libnotify) >= 0.7
 BuildRequires:	pkgconfig(libwnck-3.0) >= 2.91.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:	pkgconfig(NetworkManager) >= 0.7
+BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(libpanel-applet)
