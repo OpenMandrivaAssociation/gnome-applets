@@ -94,4 +94,4 @@ fi
 %{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets*
 %{_datadir}/gnome-panel/applets/org.gnome*
-%{_datadir}/pixmaps/window*
+#{_datadir}/pixmaps/window*
