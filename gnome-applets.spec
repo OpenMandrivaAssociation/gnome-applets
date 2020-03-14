@@ -1,10 +1,13 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 %define	gstapi	1.0
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.34.0
-Release:	2
+Version:	3.36.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/
@@ -32,7 +35,7 @@ BuildRequires:	pkgconfig(libgtop-2.0) >= 2.11.92
 BuildRequires:	pkgconfig(libnotify) >= 0.7
 BuildRequires:	pkgconfig(libwnck-3.0) >= 2.91.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:	pkgconfig(NetworkManager) >= 0.7
+BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(libpanel-applet)
@@ -91,4 +94,4 @@ fi
 %{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets*
 %{_datadir}/gnome-panel/applets/org.gnome*
-%{_datadir}/pixmaps/window*
+#{_datadir}/pixmaps/window*
