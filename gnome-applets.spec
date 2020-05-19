@@ -23,7 +23,7 @@ BuildRequires:	pkgconfig(dbus-glib-1) >= 0.74
 BuildRequires:	pkgconfig(gio-2.0) >= 2.15.3
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.15.3
 BuildRequires:	pkgconfig(glib-2.0) >= 2.22.0
-BuildRequires:	pkgconfig(gnome-doc-utils)
+#BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.15.91
 BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gobject-2.0)
