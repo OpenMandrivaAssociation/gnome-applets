@@ -83,16 +83,7 @@ fi
 
 %files -f %{name}-3.0.lang
 %doc AUTHORS COPYING NEWS README
-#config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.gnome.CPUFreqSelector.conf
-#{_bindir}/*
-#{_libexecdir}/*applet*
-#{py_puresitedir}/invest*
-#{_libdir}/gnome-applets/5.0/libwindow-picker-applet.so
+%{_libdir}/gnome-panel/modules/org.gnome.gnome-applets.so
 %{_datadir}/gnome-applets/*
-#{_libdir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
-#{_datadir}/icons/hicolor/*/devices/*
-#{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets*
-#{_datadir}/gnome-panel/applets/org.gnome*
-#{_datadir}/pixmaps/window*
