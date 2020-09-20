@@ -89,10 +89,10 @@ fi
 #{py_puresitedir}/invest*
 #{_libdir}/gnome-applets/5.0/libwindow-picker-applet.so
 %{_datadir}/gnome-applets/*
-%{_libdir}/gnome-applets/*
+#{_libdir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/hicolor/*/devices/*
-%{_datadir}/icons/hicolor/*/status/*
+#{_datadir}/icons/hicolor/*/devices/*
+#{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-applets*
-%{_datadir}/gnome-panel/applets/org.gnome*
+#{_datadir}/gnome-panel/applets/org.gnome*
 #{_datadir}/pixmaps/window*
