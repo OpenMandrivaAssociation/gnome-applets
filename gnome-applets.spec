@@ -39,6 +39,7 @@ BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(polkit-gobject-1) >= 0.92
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(libgnome-panel)
+BuildRequires:	pkgconfig(upower-glib)
 
 Requires:	dbus
 Requires:	gnome-panel
