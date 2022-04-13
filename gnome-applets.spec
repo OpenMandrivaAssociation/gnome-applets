@@ -6,7 +6,7 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.42.0
+Version:	3.44.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -30,7 +30,7 @@ BuildRequires:	pkgconfig(gobject-2.0)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gstreamer-audio-%{gstapi}) >= 0.10.2
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:	pkgconfig(gweather-3.0)
+BuildRequires:	pkgconfig(gweather4)
 BuildRequires:	pkgconfig(libgtop-2.0) >= 2.11.92
 BuildRequires:	pkgconfig(libnotify) >= 0.7
 BuildRequires:	pkgconfig(libwnck-3.0) >= 2.91.0
