@@ -6,12 +6,12 @@
 
 Summary:	Small applications which embed themselves in the GNOME panel
 Name:		gnome-applets
-Version:	3.46.0
-Release:	3
+Version:	3.49.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://www.gnome.org/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf
 BuildRequires:	intltool
