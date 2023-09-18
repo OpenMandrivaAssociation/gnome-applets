@@ -82,7 +82,7 @@ if [ "$1" = "2" -a -d %{_libdir}/invest-applet ]; then
 fi
 
 %files -f %{name}-3.0.lang
-%doc AUTHORS COPYING NEWS README
+%doc AUTHORS COPYING NEWS
 %{_libdir}/gnome-panel/modules/org.gnome.gnome-applets.so
 %{_datadir}/gnome-applets/*
 %{_datadir}/icons/hicolor/*/apps/*
