@@ -13,6 +13,10 @@ Group:		Graphical desktop/GNOME
 Url:		https://www.gnome.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/gnome-applets/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	intltool
 BuildRequires:	gnome-common
